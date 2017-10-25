@@ -13,7 +13,7 @@ app.use((req, res, next) => {
   let now = new Date().toString()
   let log = `${now}: ${req.method} ${req.url}`
 
-  console.log(log)
+  //console.log(log)
   fs.appendFile('server.log', log + '\n', (err) => {
     if (err) {
       console.log('Unable to append to server.log.')
@@ -43,6 +43,12 @@ app.get('/about', (req, res) => {
     pageTitle: 'About Page',
   })
 
+})
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects'
+  })
 })
 
 app.get('/bad', (req, res) => {
